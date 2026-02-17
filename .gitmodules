@@ -1,9 +1,0 @@
-[submodule "modules/kodnest-careers"]
-	path = modules/kodnest-careers
-	url = https://github.com/MohammedOmerKhan01/kodnest-careers
-[submodule "modules/placement-readiness"]
-	path = modules/placement-readiness
-	url = https://github.com/MohammedOmerKhan01/Placement-Readiness-Platform
-[submodule "modules/ai-resume-builder"]
-	path = modules/ai-resume-builder
-	url = https://github.com/MohammedOmerKhan01/AI-Resume-Builder

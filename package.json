@@ -4,13 +4,10 @@
   "description": "Unified career development platform integrating job tracking, placement readiness, and AI resume building",
   "private": true,
   "scripts": {
-    "dev": "npm run copy-modules && next dev",
-    "build": "npm run copy-modules && next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "copy-modules": "node scripts/copy-modules.js",
-    "postinstall": "npm run setup-modules",
-    "setup-modules": "node scripts/setup-submodules.js"
+    "lint": "next lint"
   },
   "dependencies": {
     "next": "^14.2.0",
