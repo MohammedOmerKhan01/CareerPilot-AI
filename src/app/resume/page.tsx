@@ -6,6 +6,7 @@ export default function ResumePage() {
       moduleName="AI Resume Builder"
       modulePath="ai-resume-builder"
       description="ATS-optimized resume builder with templates"
+      repoUrl="https://github.com/MohammedOmerKhan01/AI-Resume-Builder"
     />
   );
 }

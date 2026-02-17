@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "npm run copy-modules && next dev",
+    "build": "npm run copy-modules && next build",
     "start": "next start",
     "lint": "next lint",
+    "copy-modules": "node scripts/copy-modules.js",
     "postinstall": "npm run setup-modules",
     "setup-modules": "node scripts/setup-submodules.js"
   },

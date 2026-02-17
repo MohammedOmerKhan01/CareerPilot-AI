@@ -1,21 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AlertCircle, ExternalLink } from "lucide-react";
+import { AlertCircle, ExternalLink, CheckCircle } from "lucide-react";
 
 interface ModuleWrapperProps {
   moduleName: string;
   modulePath: string;
   description: string;
+  repoUrl: string;
 }
 
-export function ModuleWrapper({ moduleName, modulePath, description }: ModuleWrapperProps) {
+export function ModuleWrapper({ moduleName, modulePath, description, repoUrl }: ModuleWrapperProps) {
   const [moduleExists, setModuleExists] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check if module exists
-    fetch(`/modules/${modulePath}/index.html`)
+    // Check if module dist exists
+    fetch(`/modules/${modulePath}/dist/index.html`)
       .then((res) => {
         setModuleExists(res.ok);
         setLoading(false);
@@ -41,21 +42,24 @@ export function ModuleWrapper({ moduleName, modulePath, description }: ModuleWra
     return (
       <div className="p-8">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-6">
             <div className="flex items-start">
               <AlertCircle className="w-6 h-6 text-yellow-600 mr-3 flex-shrink-0 mt-0.5" />
               <div className="flex-1">
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Module Not Found: {moduleName}
+                  Module Setup Required: {moduleName}
                 </h3>
                 <p className="text-gray-700 mb-4">{description}</p>
                 
                 <div className="bg-white rounded-lg p-4 mb-4">
-                  <h4 className="font-semibold text-gray-900 mb-2">Setup Instructions:</h4>
+                  <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
+                    Setup Steps:
+                  </h4>
                   <ol className="list-decimal list-inside space-y-2 text-sm text-gray-700">
-                    <li>Clone the repository as a Git submodule</li>
-                    <li>Run the setup script to initialize modules</li>
-                    <li>Build the module if required</li>
+                    <li>The submodule is already added ✓</li>
+                    <li>Install dependencies in the module</li>
+                    <li>Build the module</li>
                     <li>Refresh this page</li>
                   </ol>
                 </div>
@@ -63,18 +67,21 @@ export function ModuleWrapper({ moduleName, modulePath, description }: ModuleWra
                 <div className="bg-gray-900 rounded-lg p-4 mb-4">
                   <p className="text-xs text-gray-400 mb-2">Run these commands:</p>
                   <code className="text-sm text-green-400 block mb-1">
-                    git submodule add https://github.com/MohammedOmerKhan01/{modulePath} modules/{modulePath}
-                  </code>
-                  <code className="text-sm text-green-400 block mb-1">
                     cd modules/{modulePath}
                   </code>
+                  <code className="text-sm text-green-400 block mb-1">
+                    npm install
+                  </code>
+                  <code className="text-sm text-green-400 block mb-1">
+                    npm run build
+                  </code>
                   <code className="text-sm text-green-400 block">
-                    npm install && npm run build
+                    cd ../..
                   </code>
                 </div>
 
                 <a
-                  href={`https://github.com/MohammedOmerKhan01/${modulePath}`}
+                  href={repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
@@ -86,12 +93,12 @@ export function ModuleWrapper({ moduleName, modulePath, description }: ModuleWra
             </div>
           </div>
 
-          <div className="mt-6 p-6 bg-white rounded-lg border border-gray-200">
+          <div className="p-6 bg-white rounded-lg border border-gray-200">
             <h4 className="font-semibold text-gray-900 mb-3">About This Module</h4>
             <p className="text-gray-700 mb-4">{description}</p>
             <p className="text-sm text-gray-600">
               This module is integrated as a Git submodule, preserving all original code and functionality.
-              Once set up, it will load seamlessly within this unified platform.
+              Once built, it will load seamlessly within this unified platform.
             </p>
           </div>
         </div>
@@ -103,10 +110,10 @@ export function ModuleWrapper({ moduleName, modulePath, description }: ModuleWra
   return (
     <div className="h-full">
       <iframe
-        src={`/modules/${modulePath}/index.html`}
+        src={`/modules/${modulePath}/dist/index.html`}
         className="w-full h-full border-0"
         title={moduleName}
-        sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+        sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
       />
     </div>
   );

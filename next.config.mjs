@@ -1,22 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Rewrites to handle module routing
-  async rewrites() {
-    return [
-      {
-        source: '/careers/:path*',
-        destination: '/careers',
-      },
-      {
-        source: '/readiness/:path*',
-        destination: '/readiness',
-      },
-      {
-        source: '/resume/:path*',
-        destination: '/resume',
-      },
-    ];
+  // Configure webpack to handle module files
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false, path: false };
+    return config;
   },
 };
 
