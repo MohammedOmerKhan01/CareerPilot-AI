@@ -7,8 +7,8 @@ import { Header } from "@/components/layout/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Unified Career Platform",
-  description: "Integrated career development platform",
+  title: "CareerPilot AI - Unified Career Platform",
+  description: "Your all-in-one career development platform - Job tracking, placement readiness, and AI resume building",
 };
 
 export default function RootLayout({

@@ -1,6 +1,7 @@
 {
-  "name": "unified-career-platform",
+  "name": "careerpilot-ai",
   "version": "1.0.0",
+  "description": "Unified career development platform integrating job tracking, placement readiness, and AI resume building",
   "private": true,
   "scripts": {
     "dev": "npm run copy-modules && next dev",

@@ -16,8 +16,15 @@ export function Sidebar() {
 
   return (
     <div className="flex flex-col w-64 bg-white border-r border-gray-200">
-      <div className="flex items-center justify-center h-16 border-b border-gray-200">
-        <h1 className="text-xl font-bold text-blue-600">Career Platform</h1>
+      <div className="flex items-center justify-center h-16 border-b border-gray-200 px-4">
+        <div className="flex items-center">
+          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-2">
+            <span className="text-white font-bold text-sm">CP</span>
+          </div>
+          <h1 className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            CareerPilot AI
+          </h1>
+        </div>
       </div>
 
       <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
