@@ -4,11 +4,6 @@
   "installCommand": "npm install",
   "framework": "nextjs",
   "outputDirectory": ".next",
-  "env": {
-    "NEXT_PUBLIC_CAREERS_URL": "@careers-url",
-    "NEXT_PUBLIC_READINESS_URL": "@readiness-url",
-    "NEXT_PUBLIC_RESUME_URL": "@resume-url"
-  },
   "headers": [
     {
       "source": "/(.*)",
